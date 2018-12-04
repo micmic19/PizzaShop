@@ -25,8 +25,11 @@ def parse_order_line orders_line
 	return arr
 end
 
-get '/' do
+before do
 	@products = Product.all
+end
+
+get '/' do
 	erb :index
 end
 
@@ -35,6 +38,10 @@ get '/about' do
 end
 
 post '/cart' do
-	@orders = parse_order_line(params[:orders])
-	erb "Hello! #{@orders.inspect}"
+	@items = parse_order_line(params[:orders])
+
+	@items.each do |item|
+		item[0] = Product.find(item[0])
+	end
+	erb :cart
 end
