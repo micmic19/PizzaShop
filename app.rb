@@ -56,12 +56,10 @@ post '/place_order' do
 	@o = Order.new params[:order]
 	if @o.save
 		@success = true
-		erb :place_order
 	else
 		@error = @o.errors.full_messages.first
-		erb :place_order
 	end
-
+	erb :place_order
 end
 
 get '/orders' do

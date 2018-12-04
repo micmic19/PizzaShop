@@ -1,12 +1,10 @@
 <% if @success %>
-	<h2>Your order is sent successfuly!</h2>
+	<h2>Your order has been sent successfuly!</h2>
 
 	<script type="text/javascript">
 		$(function()
 	 {
-		clear_cart();
-		update_orders_input();
-		update_orders_button();
+		window.localStorage.clear();
 		});
 	</script>
 <% else %>
