@@ -38,10 +38,12 @@ get '/about' do
 end
 
 post '/cart' do
-	@items = parse_order_line(params[:orders])
+	@orders_input = params[:orders]
+	@items = parse_order_line(@orders_input)
 
 	@items.each do |item|
 		item[0] = Product.find(item[0])
 	end
+
 	erb :cart
 end
