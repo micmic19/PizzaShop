@@ -63,3 +63,8 @@ post '/place_order' do
 	end
 
 end
+
+get '/orders' do
+	@orders = Order.order('id DESC')
+	erb :orders
+end
