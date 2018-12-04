@@ -8,6 +8,9 @@ set :database, "sqlite3:pizzashop.db"
 
 class Product < ActiveRecord::Base
 end
+class Order < ActiveRecord::Base
+end
+
 
 def parse_order_line orders_line
 	
@@ -46,4 +49,17 @@ post '/cart' do
 	end
 
 	erb :cart
+end
+
+post '/place_order' do
+	@success = false
+	@o = Order.new params[:order]
+	if @o.save
+		@success = true
+		erb :place_order
+	else
+		@error = @o.errors.full_messages.first
+		erb :place_order
+	end
+
 end

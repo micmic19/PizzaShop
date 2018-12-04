@@ -36,6 +36,12 @@ function total_items()
 	return total;
 }
 
+function clear_cart()
+{
+	window.localStorage.clear();
+}
+
+
 function cart_get_number_of_items()
 {
 	var cnt = 0;

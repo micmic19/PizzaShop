@@ -1,0 +1,14 @@
+<% if @success %>
+	<h2>Your order is sent successfuly!</h2>
+
+	<script type="text/javascript">
+		$(function()
+	 {
+		clear_cart();
+		update_orders_input();
+		update_orders_button();
+		});
+	</script>
+<% else %>
+	<h2>Error</h2>
+<% end %>
