@@ -44,11 +44,20 @@ post '/cart' do
 	@orders_input = params[:orders]
 	@items = parse_order_line(@orders_input)
 
+	#выводим, если карзина пустая
+	if @items.length == 0
+		return erb :cart_is_empty
+
+	end
+
+	#выводим список товаров в корзине
 	@items.each do |item|
 		item[0] = Product.find(item[0])
 	end
 
+	#возвращаем представление по-умолчанию
 	erb :cart
+
 end
 
 post '/place_order' do
