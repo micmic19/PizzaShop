@@ -8,9 +8,9 @@ set :database, "sqlite3:pizzashop.db"
 
 class Product < ActiveRecord::Base
 end
+
 class Order < ActiveRecord::Base
 end
-
 
 def parse_order_line orders_line
 	
